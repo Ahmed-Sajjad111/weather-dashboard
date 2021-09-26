@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="h1 text-center titlecard">Weather Dashboard</header>
+
+    <!-- Body -->
+    <main class="container-fluid vh-100 mr-0">
+        <div class="row m-0 vh-100">
+            <aside class="col-3">
+                <div class="row h2 font-weight-bold mb-3">
+                    Search for a City:
+                </div>
+                <input id="city-search" class="row w-100 mb-3" placeholder="New York">
+                <button id="submit-search-btn" type="button" class="row btn btn-primary btn-block mb-3">Search</button>
+                <div id="city-list" class="row border-top border-dark w-100 h-100"></div>
+            </aside>
+            <div id ="weather-container" class="col-9 p-0">
+                <div id="current-chosen-city" class="row h-25 w-100 mb-3 border border-dark d-flex flex-column justify-content-around">
+                    <p id="current-city-date" class="h3 mb-0 pl-3">City (Date)</p>
+                    <p id="current-temp" class="mb-0 pl-3">Temp:</p>
+                    <p id="current-wind" class="mb-0 pl-3">Wind:</p>
+                    <p id="current-humidity" class="mb-0 pl-3">Humidity:</p>
+                    <p id="current-uv-index" class="mb-0 pl-3">UV Index:</p>
+                </div>
+                <div class="row h3 mb-3"> 5-Day Forecast:</div>
+                <div id="five-day-forecast" class="row h-50 justify-content-between mr-3">
+                    <div id="day-1" class="col-2 h-50 d-flex flex-column justify-content-between text-white daycard">
+                        <p id="day-1-date">Date</p>
+                        <img id="day-1-weather-icon">
+                        <p id="day-1-temperature">Temp:</p>
+                        <p id="day-1-wind">Wind:</p>
+                        <p id="day-1-humidity">Humidity:</p>
+                    </div>
+                    <div id="day-2" class="col-2 h-50 d-flex flex-column justify-content-between text-white daycard">
+                        <p id="day-2-date">Date</p>
+                        <img id="day-2-weather-icon">
+                        <p id="day-2-temperature">Temp:</p>
+                        <p id="day-2-wind">Wind:</p>
+                        <p id="day-2-humidity">Humidity:</p>
+                    </div>
+                    <div id="day-3" class="col-2 h-50 d-flex flex-column justify-content-between text-white daycard">
+                        <p id="day-3-date">Date</p>
+                        <img id="day-3-weather-icon">
+                        <p id="day-3-temperature">Temp:</p>
+                        <p id="day-3-wind">Wind:</p>
+                        <p id="day-3-humidity">Humidity:</p>
+                    </div>
+                    <div id="day-4" class="col-2 h-50 d-flex flex-column justify-content-between text-white daycard">
+                        <p id="day-4-date">Date</p>
+                        <img id="day-4-weather-icon">
+                        <p id="day-4-temperature">Temp:</p>
+                        <p id="day-4-wind">Wind:</p>
+                        <p id="day-4-humidity">Humidity:</p>
+                    </div>
+                    <div id="day-5" class="col-2 h-50 d-flex flex-column justify-content-between text-white daycard">
+                        <p id="day-5-date">Date</p>
+                        <img id="day-5-weather-icon">
+                        <p id="day-5-temperature">Temp:</p>
+                        <p id="day-5-wind">Wind:</p>
+                        <p id="day-5-humidity">Humidity:</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src ="./assets/script/script.js"></script>
+</body>
+</html>

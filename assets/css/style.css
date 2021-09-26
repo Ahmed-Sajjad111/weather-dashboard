@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow: hidden;
+}
+
+.titlecard {
+    padding: 15px 0 15px 0;
+    background-image: linear-gradient(to right, red, yellow) ;
+}
+
+.daycard {
+    background-color: rgb(40, 53, 70);
+}
