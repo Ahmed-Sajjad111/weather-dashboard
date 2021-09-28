@@ -16,7 +16,7 @@ body {
     background-color: rgb(40, 53, 70);
 }
 
-.weather-icon {
+.weather-icon, #current-weather-icon {
     width:fit-content;
 }
 

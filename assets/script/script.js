@@ -67,7 +67,8 @@ $("#submit-search-btn").on("click", function() {
 
 //render data to page for today's weather
 const displayCurrentWeather = function(data) {
-    $("#current-city-date").text(cityName + " (" + currentDate + ")");
+    $("#current-city-date").html(cityName + " (" + currentDate + ")" + "<img id ='current-weather-icon'>");
+    $("#current-weather-icon").attr("src", "http://openweathermap.org/img/wn/" + data.current.weather[0].icon + ".png")
     $("#current-temp").text("Temp: " + data.current.temp + "\u00B0F");
     $("#current-wind").text("Wind: " + data.current.wind_speed + " MPH");
     $("#current-humidity").text("Humidity: " + data.current.humidity + " %");
@@ -92,7 +93,6 @@ const displayCurrentWeather = function(data) {
 const displayForecast = function(data) {
     for (let i = 0; i < 5; i++) {
         let incrementingDate = moment(currentDate, "MM/DD/YYYY").add(i+1, "days").format("MM/DD/YYYY")
-        console.log(incrementingDate)
         $("#day-" + (i+1) +"-date").text("(" + incrementingDate + ")")
         $("#day-" + (i+1) +"-weather-icon").attr("src","http://openweathermap.org/img/wn/" + data.daily[i].weather[0].icon + ".png")
         $("#day-" + (i+1) +"-weather-icon").attr("class","weather-icon")
