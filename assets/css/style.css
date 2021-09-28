@@ -12,6 +12,12 @@ body {
     background-image: linear-gradient(to right, red, yellow) ;
 }
 
+.saved-city {
+    margin-top: 15px;
+    height: 40px;
+    width: 100%;
+}
+
 .daycard {
     background-color: rgb(40, 53, 70);
 }

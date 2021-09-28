@@ -3,6 +3,18 @@ let cityName = "";
 let apiKey = "71a63790d47217e8d8fa55c3ef88717e";
 let currentDate = moment().format("MM/DD/YYYY");
 
+//onclick event for search button to gather value and pass into cityRequest()
+$("#submit-search-btn").on("click", function() {
+    cityName = $("#city-search").val().trim();
+    cityRequest(cityName);
+});
+
+//onclick event for previously searched cities to gather value and pass into cityRequest()
+$("#city-list").on("click", ".saved-city" , function() {
+    cityName = $(this).text().trim();
+    cityRequest(cityName)
+});
+
 //fetch request using city name
 const cityRequest = function() {
     let cityApiUrl = 
@@ -12,7 +24,6 @@ const cityRequest = function() {
                 + apiKey;
     fetch(cityApiUrl)
         .then(function(response) {
-            //request was successful
             if (response.ok) {
                 response.json().then(function(data) {
                     addCity(cityName)
@@ -42,7 +53,6 @@ const coordRequest = function(lat, lon) {
                     + apiKey;
     fetch(coordApiUrl)
         .then(function(response) {
-            //request was successful
             if(response.ok) {
                 response.json().then(function(data) {
                     displayCurrentWeather(data)
@@ -57,11 +67,6 @@ const coordRequest = function(lat, lon) {
         })
 }
 
-//onclick event for search button to gather value and pass into cityRequest()
-$("#submit-search-btn").on("click", function() {
-    cityName = $("#city-search").val().trim();
-    cityRequest(cityName);
-});
 
 //render data to page for today's weather
 const displayCurrentWeather = function(data) {
@@ -105,7 +110,7 @@ const displayCityList = function(cityArray) {
     $("#city-list").children().remove();
     for (let i = 0; i < cityArray.length; i++) {
         let cityBtn = $("<button id='saved-city-button'></button>")
-            .addClass("saved-city")
+            .addClass(" btn btn-secondary saved-city")
             .text(cityArray[i])
         $("#city-list").append(cityBtn)
     }
