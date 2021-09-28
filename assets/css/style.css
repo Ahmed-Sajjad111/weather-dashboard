@@ -17,21 +17,21 @@ body {
 }
 
 .uv-low {
-
+    color: green;
 }
 
 .uv-moderate {
-
+    color: yellow;
 }
 
 .uv-high {
-
+    color: orange;
 }
 
 .uv-very-high {
-
+    color: red;
 }
 
 .uv-extreme {
-
+    color: purple;
 }

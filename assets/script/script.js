@@ -67,20 +67,33 @@ $("#submit-search-btn").on("click", function() {
 //render data to page for today's weather
 const displayCurrentWeather = function(data) {
     $("#current-city-date").text(cityName);
-    $("#current-temp").text("Temp: " + data.current.temp);
+    $("#current-temp").text("Temp: " + data.current.temp + "\u00B0F");
     $("#current-wind").text("Wind: " + data.current.wind_speed + " MPH");
     $("#current-humidity").text("Humidity: " + data.current.humidity + " %");
     $("#current-uv-index").html("UV Index: <span id ='uv-index-category'></span>");
     let uvi = data.current.uvi
     let uvSpan= $("#uv-index-category")
     uvSpan.text(uvi)
-    if (uvi <= 2){
+    if (uvi < 3){
         uvSpan.addClass("uv-low")
+    } else if (uvi >= 3 && uvi < 6) {
+        uvSpan.addClass("uv-moderate")
+    } else if (uvi >= 6 && uvi < 8) {
+        uvSpan.addClass("uv-high")
+    } else if (uvi >= 8 && uvi < 11) {
+        uvSpan.addClass("uv-very-high")
+    } else if (uvi >= 11) {
+        uvSpan.addClass("uv-extreme")
     }
-    console.log(data)
 }
 
-//redner data to page for next 5 day's weather
+//render data to page for next 5 day's weather
 const displayForecast = function(data) {
+    for (let i = 0; i < 5; i++) {
+        $("#day-" + (i+1) +"-date").text("hi")
+        $("#day-" + (i+1) +"-temperature").text("Temp: " + data.daily[i].temp.day + "\u00B0F")
+        $("#day-" + (i+1) +"-wind").text("Wind: " + data.daily[i].wind_speed + " MPH")
+        $("#day-" + (i+1) +"-humidity").text("Humidity: " + data.daily[i].humidity + " %")
+    }
     console.log(data)
 }
