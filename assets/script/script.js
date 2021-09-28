@@ -7,6 +7,7 @@ let currentDate = moment().format("MM/DD/YYYY");
 $("#submit-search-btn").on("click", function() {
     cityName = $("#city-search").val().trim();
     cityRequest(cityName);
+    $("#city-search").val("")
 });
 
 //onclick event for previously searched cities to gather value and pass into cityRequest()
