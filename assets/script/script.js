@@ -1,5 +1,6 @@
 let cityName = "";
 let apiKey = "71a63790d47217e8d8fa55c3ef88717e"
+let currentDate = moment().format("MM/DD/YYYY");
 
 //fetch request using city name
 const cityRequest = function() {
@@ -66,7 +67,7 @@ $("#submit-search-btn").on("click", function() {
 
 //render data to page for today's weather
 const displayCurrentWeather = function(data) {
-    $("#current-city-date").text(cityName);
+    $("#current-city-date").text(cityName + " (" + currentDate + ")");
     $("#current-temp").text("Temp: " + data.current.temp + "\u00B0F");
     $("#current-wind").text("Wind: " + data.current.wind_speed + " MPH");
     $("#current-humidity").text("Humidity: " + data.current.humidity + " %");
@@ -90,7 +91,11 @@ const displayCurrentWeather = function(data) {
 //render data to page for next 5 day's weather
 const displayForecast = function(data) {
     for (let i = 0; i < 5; i++) {
-        $("#day-" + (i+1) +"-date").text("hi")
+        let incrementingDate = moment(currentDate, "MM/DD/YYYY").add(i+1, "days").format("MM/DD/YYYY")
+        console.log(incrementingDate)
+        $("#day-" + (i+1) +"-date").text("(" + incrementingDate + ")")
+        $("#day-" + (i+1) +"-weather-icon").attr("src","http://openweathermap.org/img/wn/" + data.daily[i].weather[0].icon + ".png")
+        $("#day-" + (i+1) +"-weather-icon").attr("class","weather-icon")
         $("#day-" + (i+1) +"-temperature").text("Temp: " + data.daily[i].temp.day + "\u00B0F")
         $("#day-" + (i+1) +"-wind").text("Wind: " + data.daily[i].wind_speed + " MPH")
         $("#day-" + (i+1) +"-humidity").text("Humidity: " + data.daily[i].humidity + " %")

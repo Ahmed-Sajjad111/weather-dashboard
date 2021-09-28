@@ -16,6 +16,10 @@ body {
     background-color: rgb(40, 53, 70);
 }
 
+.weather-icon {
+    width:fit-content;
+}
+
 .uv-low {
     color: green;
 }
