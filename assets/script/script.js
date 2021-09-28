@@ -141,7 +141,6 @@ const addCity = function(cityName) {
         displayCityList(cityList);
         saveCityList(cityList)
     }
-    console.log(cityList)
 }
 
 

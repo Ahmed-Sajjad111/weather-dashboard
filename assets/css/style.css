@@ -45,3 +45,28 @@ body {
 .uv-extreme {
     color: purple;
 }
+
+@media screen and (max-width: 1200px) {
+    body {
+        overflow: visible;
+    }
+
+    .col-xl-3 {
+        height: auto;
+        padding-right: 0;
+    }
+
+    #weather-container {
+        margin-left: 15px;
+    }
+
+    #current-chosen-city {
+        margin-top: 20px;
+        height: 200px !important;
+    }
+
+    #day-1, #day-2, #day-3, #day-4, #day-5 {
+        margin-bottom: 20px;
+        height: 200px !important;
+    }
+}
