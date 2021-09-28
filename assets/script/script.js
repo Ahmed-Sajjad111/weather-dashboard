@@ -1,5 +1,6 @@
+let cityList = [];
 let cityName = "";
-let apiKey = "71a63790d47217e8d8fa55c3ef88717e"
+let apiKey = "71a63790d47217e8d8fa55c3ef88717e";
 let currentDate = moment().format("MM/DD/YYYY");
 
 //fetch request using city name
@@ -11,11 +12,10 @@ const cityRequest = function() {
                 + apiKey;
     fetch(cityApiUrl)
         .then(function(response) {
-            console.log(response)
             //request was successful
             if (response.ok) {
                 response.json().then(function(data) {
-                    console.log(data)
+                    addCity(cityName)
                     let lat = data.coord.lat
                     let lon = data.coord.lon
                     coordRequest(lat, lon)
@@ -42,11 +42,9 @@ const coordRequest = function(lat, lon) {
                     + apiKey;
     fetch(coordApiUrl)
         .then(function(response) {
-            console.log(response)
             //request was successful
             if(response.ok) {
                 response.json().then(function(data) {
-                    console.log(data)
                     displayCurrentWeather(data)
                     displayForecast(data)
                 })
@@ -100,5 +98,46 @@ const displayForecast = function(data) {
         $("#day-" + (i+1) +"-wind").text("Wind: " + data.daily[i].wind_speed + " MPH")
         $("#day-" + (i+1) +"-humidity").text("Humidity: " + data.daily[i].humidity + " %")
     }
-    console.log(data)
 }
+
+//display cities previously searched
+const displayCityList = function(cityArray) {
+    $("#city-list").children().remove();
+    for (let i = 0; i < cityArray.length; i++) {
+        let cityBtn = $("<button id='saved-city-button'></button>")
+            .addClass("saved-city")
+            .text(cityArray[i])
+        $("#city-list").append(cityBtn)
+    }
+}
+
+//save array of cities previously searched into localStorage
+const saveCityList = function(cityArray) {
+    localStorage.setItem("city", JSON.stringify(cityArray));
+}
+
+//load and display previously searched cities from localStorage
+const getCityList = function() {
+    cityList = JSON.parse(localStorage.getItem("city"));
+    if (!cityList) {
+        cityList = [];
+    } else {
+        displayCityList(cityList);
+    }
+}
+
+//if the city searched isnt already saved, push to array, append, and then save to localstorage
+const addCity = function(cityName) {
+    if (cityList.indexOf(cityName) === -1) {
+        cityList.push(cityName);
+        while (cityList.length > 8) {
+            cityList.splice(0,1);
+        }
+        displayCityList(cityList);
+        saveCityList(cityList)
+    }
+    console.log(cityList)
+}
+
+
+getCityList();
